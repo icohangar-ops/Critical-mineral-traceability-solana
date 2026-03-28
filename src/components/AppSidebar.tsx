@@ -6,6 +6,7 @@ import {
   Building2,
   Activity,
   QrCode,
+  FileText,
   Settings,
   Database,
 } from "lucide-react";
@@ -17,6 +18,7 @@ const navItems = [
   { to: "/entities", icon: Building2, label: "Entity Registry" },
   { to: "/events", icon: Activity, label: "Supply Chain Events" },
   { to: "/verifier", icon: QrCode, label: "Verifier" },
+  { to: "/grant-application", icon: FileText, label: "Grant Application" },
 ];
 
 const AppSidebar = () => {

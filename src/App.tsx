@@ -10,6 +10,7 @@ import Compliance from "./pages/Compliance";
 import Entities from "./pages/Entities";
 import Events from "./pages/Events";
 import Verifier from "./pages/Verifier";
+import GrantApplication from "./pages/GrantApplication";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
               <Route path="/entities" element={<Entities />} />
               <Route path="/events" element={<Events />} />
               <Route path="/verifier" element={<Verifier />} />
+              <Route path="/grant-application" element={<GrantApplication />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
