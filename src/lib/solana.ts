@@ -1,8 +1,12 @@
 import { Connection, PublicKey, LAMPORTS_PER_SOL } from "@solana/web3.js";
 
-const HELIUS_RPC_URL = "https://beta.helius-rpc.com/?api-key=REDACTED_HELIUS_API_KEY";
+// Use the standard Helius RPC endpoint (supports browser CORS)
+const HELIUS_RPC_URL = "https://mainnet.helius-rpc.com/?api-key=REDACTED_HELIUS_API_KEY";
 
-export const connection = new Connection(HELIUS_RPC_URL, "confirmed");
+export const connection = new Connection(HELIUS_RPC_URL, {
+  commitment: "confirmed",
+  confirmTransactionInitialTimeout: 10000,
+});
 
 export const getClusterInfo = async () => {
   try {
