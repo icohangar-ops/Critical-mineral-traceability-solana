@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# CHP session artifacts (local only)
+.chp_registry.json
+.chp/sessions/
