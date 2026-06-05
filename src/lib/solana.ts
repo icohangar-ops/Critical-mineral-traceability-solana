@@ -1,7 +1,9 @@
 import { Connection, PublicKey, LAMPORTS_PER_SOL } from "@solana/web3.js";
 
-// Use the standard Helius RPC endpoint (supports browser CORS)
-const HELIUS_RPC_URL = "https://mainnet.helius-rpc.com/?api-key=REDACTED_HELIUS_API_KEY";
+// Helius RPC endpoint — set NEXT_PUBLIC_HELIUS_API_KEY env var
+const HELIUS_RPC_URL = process.env.NEXT_PUBLIC_HELIUS_API_KEY
+  ? `https://mainnet.helius-rpc.com/?api-key=${process.env.NEXT_PUBLIC_HELIUS_API_KEY}`
+  : "https://api.mainnet-beta.solana.com";
 
 export const connection = new Connection(HELIUS_RPC_URL, {
   commitment: "confirmed",

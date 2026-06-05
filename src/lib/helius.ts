@@ -1,4 +1,4 @@
-const HELIUS_API_KEY = "REDACTED_HELIUS_API_KEY";
+const HELIUS_API_KEY = process.env.NEXT_PUBLIC_HELIUS_API_KEY || "";
 const HELIUS_ENHANCED_BASE = `https://api-mainnet.helius-rpc.com/v0`;
 
 export interface EnhancedTransaction {
@@ -15,6 +15,10 @@ export interface EnhancedTransaction {
 }
 
 export const parseTransactions = async (signatures: string[]): Promise<EnhancedTransaction[]> => {
+  if (!HELIUS_API_KEY) {
+    console.warn("Helius API key not configured — transaction parsing disabled");
+    return [];
+  }
   try {
     const response = await fetch(
       `${HELIUS_ENHANCED_BASE}/transactions/?api-key=${HELIUS_API_KEY}`,
@@ -36,6 +40,10 @@ export const getTransactionHistory = async (
   address: string,
   options?: { before?: string; limit?: number; type?: string }
 ): Promise<EnhancedTransaction[]> => {
+  if (!HELIUS_API_KEY) {
+    console.warn("Helius API key not configured — transaction history disabled");
+    return [];
+  }
   try {
     const params = new URLSearchParams({ "api-key": HELIUS_API_KEY });
     if (options?.before) params.set("before", options.before);
