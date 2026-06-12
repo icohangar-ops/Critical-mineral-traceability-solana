@@ -85,7 +85,7 @@ The React/TypeScript frontend is deployed and connected to Solana mainnet via He
 
 ## What's Planned
 
-The following components are designed and roadmapped but not yet implemented. See [`docs/ROADMAP.md`](docs/ROADMAP.md) for the full phased delivery plan.
+The following components are designed and roadmapped but not yet implemented. See [`ROADMAP.md`](ROADMAP.md) for the full phased delivery plan.
 
 **Solana Programs (Anchor/Rust):**
 - Asset Graph & Provenance Program — PDA-based asset accounts, custody transfer instructions, provenance DAG
@@ -175,11 +175,11 @@ npm run preview
 
 | Document | Description |
 |----------|-------------|
-| [`docs/ROADMAP.md`](docs/ROADMAP.md) | Phased delivery plan with milestones and current status |
-| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) *(planned)* | Detailed system architecture and component design |
-| [`docs/PROGRAMS.md`](docs/PROGRAMS.md) *(planned)* | Solana program specifications and instruction reference |
+| [`ROADMAP.md`](ROADMAP.md) | Phased delivery plan with milestones and current status |
+| [`ARCHITECTURE.md`](ARCHITECTURE.md) | Detailed system architecture and component design |
+| [`SOLANA-PROGRAMS.md`](SOLANA-PROGRAMS.md) | Solana program specifications and instruction reference |
 | [`docs/POLICY_PROFILES.md`](docs/POLICY_PROFILES.md) *(planned)* | FEOC, IRA, and DoD policy profile definitions |
-| [`docs/DATA_SCHEMAS.md`](docs/DATA_SCHEMAS.md) *(planned)* | Canonical asset, event, and entity data schemas |
+| [`DATA-MODEL.md`](DATA-MODEL.md) | Canonical asset, event, and entity data schemas |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Contribution guidelines, development setup, and PR process |
 
 ---
