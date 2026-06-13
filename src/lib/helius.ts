@@ -1,5 +1,18 @@
+import { safeFetch } from "./resilience/safeFetch";
+
 const HELIUS_API_KEY = process.env.NEXT_PUBLIC_HELIUS_API_KEY || "";
-const HELIUS_ENHANCED_BASE = `https://api-mainnet.helius-rpc.com/v0`;
+
+// Route Helius Enhanced API calls through a relative path. In dev, vite.config.ts
+// proxies "/helius" to api-mainnet.helius-rpc.com and injects the API key
+// server-side, so the key never appears in the browser-visible URL, CDN, or
+// server access logs. In prod, point this same path at a serverless/edge
+// function that injects the key. The query-string key has been removed from the
+// client; we only fall back to it when no proxy is configured (legacy/local).
+const HELIUS_ENHANCED_BASE = "/helius/v0";
+
+// Per-attempt timeout and retry budget for the interactive user path.
+const HELIUS_TIMEOUT_MS = 8_000;
+const HELIUS_MAX_ATTEMPTS = 3;
 
 export interface EnhancedTransaction {
   signature: string;
@@ -20,12 +33,14 @@ export const parseTransactions = async (signatures: string[]): Promise<EnhancedT
     return [];
   }
   try {
-    const response = await fetch(
-      `${HELIUS_ENHANCED_BASE}/transactions/?api-key=${HELIUS_API_KEY}`,
+    const response = await safeFetch(
+      new URL(`${HELIUS_ENHANCED_BASE}/transactions/`, window.location.origin),
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ transactions: signatures }),
+        timeoutMs: HELIUS_TIMEOUT_MS,
+        maxAttempts: HELIUS_MAX_ATTEMPTS,
       }
     );
     if (!response.ok) throw new Error(`Helius API error: ${response.status}`);
@@ -45,14 +60,18 @@ export const getTransactionHistory = async (
     return [];
   }
   try {
-    const params = new URLSearchParams({ "api-key": HELIUS_API_KEY });
-    if (options?.before) params.set("before", options.before);
-    if (options?.limit) params.set("limit", options.limit.toString());
-    if (options?.type) params.set("type", options.type);
-
-    const response = await fetch(
-      `${HELIUS_ENHANCED_BASE}/addresses/${address}/transactions?${params.toString()}`
+    const url = new URL(
+      `${HELIUS_ENHANCED_BASE}/addresses/${address}/transactions`,
+      window.location.origin
     );
+    if (options?.before) url.searchParams.set("before", options.before);
+    if (options?.limit) url.searchParams.set("limit", options.limit.toString());
+    if (options?.type) url.searchParams.set("type", options.type);
+
+    const response = await safeFetch(url, {
+      timeoutMs: HELIUS_TIMEOUT_MS,
+      maxAttempts: HELIUS_MAX_ATTEMPTS,
+    });
     if (!response.ok) throw new Error(`Helius API error: ${response.status}`);
     return await response.json();
   } catch (error) {
