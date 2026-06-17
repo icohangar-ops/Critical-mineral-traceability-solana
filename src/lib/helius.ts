@@ -1,6 +1,6 @@
 import { safeFetch } from "./resilience/safeFetch";
 
-const HELIUS_API_KEY = process.env.NEXT_PUBLIC_HELIUS_API_KEY || "";
+const HELIUS_API_KEY = import.meta.env.VITE_HELIUS_API_KEY || "";
 
 // Route Helius Enhanced API calls through a relative path. In dev, vite.config.ts
 // proxies "/helius" to api-mainnet.helius-rpc.com and injects the API key

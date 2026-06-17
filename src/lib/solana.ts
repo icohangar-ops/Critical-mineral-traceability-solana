@@ -1,8 +1,8 @@
 import { Connection, PublicKey, LAMPORTS_PER_SOL } from "@solana/web3.js";
 
-// Helius RPC endpoint — set NEXT_PUBLIC_HELIUS_API_KEY env var
-const HELIUS_RPC_URL = process.env.NEXT_PUBLIC_HELIUS_API_KEY
-  ? `https://mainnet.helius-rpc.com/?api-key=${process.env.NEXT_PUBLIC_HELIUS_API_KEY}`
+// Helius RPC endpoint — set VITE_HELIUS_API_KEY env var
+const HELIUS_RPC_URL = import.meta.env.VITE_HELIUS_API_KEY
+  ? `https://mainnet.helius-rpc.com/?api-key=${import.meta.env.VITE_HELIUS_API_KEY}`
   : "https://api.mainnet-beta.solana.com";
 
 export const connection = new Connection(HELIUS_RPC_URL, {

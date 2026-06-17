@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
   // client or exposed in browser-visible request URLs / CDN logs. The dev
   // proxy below injects it as a query param on the way out to Helius.
   const heliusKey =
-    process.env.HELIUS_API_KEY || process.env.NEXT_PUBLIC_HELIUS_API_KEY || "";
+    process.env.HELIUS_API_KEY || process.env.VITE_HELIUS_API_KEY || "";
 
   return {
     server: {
