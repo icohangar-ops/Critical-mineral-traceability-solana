@@ -12,6 +12,21 @@ dist
 dist-ssr
 *.local
 
+# Environment variables (never commit real keys)
+.env
+.env.local
+.env.*.local
+
+# Test / coverage output
+coverage
+test-results
+playwright-report
+
+# Solana / Anchor build output
+target
+test-ledger
+.anchor
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
