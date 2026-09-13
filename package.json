@@ -95,7 +95,7 @@
     "@noble/curves": "2.3.0",
     "@noble/hashes": "2.4.0",
     "ws": "8.21.1",
-    "lodash": "4.18.1",
+    "lodash": "https://npm.aikido.io/241fc32efb444a7e76965/lodash@4.17.21-aikido.2",
     "tinypool": "2.1.2",
     "brace-expansion": "1.1.18",
     "browserslist": "4.28.7",
