@@ -3,7 +3,7 @@
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Solana](https://img.shields.io/badge/Solana-mainnet-9945FF?logo=solana&logoColor=white)](https://solana.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Status: Alpha](https://img.shields.io/badge/Status-Alpha-orange)](https://github.com/zan-maker/helius-pulse-forge)
+[![Status: Alpha](https://img.shields.io/badge/Status-Alpha-orange)](https://github.com/icohangar-ops/Critical-mineral-traceability-solana)
 
 **Solana-based Critical Minerals Traceability Platform — mine to cell pack, tamper-evident, DoD/IRA-compliant.**
 
@@ -135,8 +135,8 @@ The following components are designed and roadmapped but not yet implemented. Se
 ### Installation
 
 ```bash
-git clone https://github.com/zan-maker/helius-pulse-forge.git
-cd helius-pulse-forge
+git clone https://github.com/icohangar-ops/Critical-mineral-traceability-solana.git
+cd Critical-mineral-traceability-solana
 npm install
 ```
 
